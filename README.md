@@ -9,6 +9,8 @@ Playlist Application is a small Python command-line program for creating and man
 - Remove a song by title without case-sensitive matching.
 - Display songs in playlist order.
 - Show the playlist's total duration.
+- Search for songs by title or artist without case-sensitive matching.
+- Report the number of songs in the playlist.
 
 ## Requirements
 
