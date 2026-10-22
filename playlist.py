@@ -43,3 +43,7 @@ class Playlist:
         """Return the combined song duration in seconds."""
         return sum(song.duration_seconds for song in self._songs)
 
+    def song_count(self) -> int:
+        """Return the number of songs in the playlist."""
+        return len(self._songs)
+

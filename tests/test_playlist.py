@@ -30,6 +30,14 @@ class PlaylistTests(unittest.TestCase):
 
         self.assertEqual(self.playlist.total_duration(), 425)
 
+    def test_song_count_reports_number_of_songs(self):
+        self.assertEqual(self.playlist.song_count(), 0)
+
+        self.playlist.add_song(self.song)
+        self.playlist.add_song(Song("Sunrise", "The Signals", 180))
+
+        self.assertEqual(self.playlist.song_count(), 2)
+
     def test_song_rejects_negative_duration(self):
         with self.assertRaisesRegex(ValueError, "non-negative"):
             Song("Broken", "Unknown", -1)
