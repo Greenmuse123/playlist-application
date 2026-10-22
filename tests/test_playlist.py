@@ -30,6 +30,18 @@ class PlaylistTests(unittest.TestCase):
 
         self.assertEqual(self.playlist.total_duration(), 425)
 
+    def test_search_songs_matches_title_or_artist_without_case_sensitivity(self):
+        matching_title = Song("Desert Signal", "Night Radio", 190)
+        matching_artist = Song("Open Highway", "The Signals", 210)
+        self.playlist.add_song(matching_title)
+        self.playlist.add_song(matching_artist)
+        self.playlist.add_song(Song("Sunrise", "Morning Band", 180))
+
+        self.assertEqual(
+            self.playlist.search_songs("SIGNAL"),
+            [matching_title, matching_artist],
+        )
+
     def test_song_rejects_negative_duration(self):
         with self.assertRaisesRegex(ValueError, "non-negative"):
             Song("Broken", "Unknown", -1)
