@@ -43,3 +43,13 @@ class Playlist:
         """Return the combined song duration in seconds."""
         return sum(song.duration_seconds for song in self._songs)
 
+    def search_songs(self, query: str) -> list[Song]:
+        """Return songs whose title or artist contains a search query."""
+        normalized_query = query.casefold()
+        return [
+            song
+            for song in self._songs
+            if normalized_query in song.title.casefold()
+            or normalized_query in song.artist.casefold()
+        ]
+
