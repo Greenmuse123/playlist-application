@@ -53,3 +53,7 @@ class Playlist:
             or normalized_query in song.artist.casefold()
         ]
 
+    def song_count(self) -> int:
+        """Return the number of songs in the playlist."""
+        return len(self._songs)
+
